@@ -1,5 +1,8 @@
-https://fnasimbd.github.io/blog/2016/01/11/c-sharp-configurations.html tham khao  
-if "$(ConfigurationName)" == "Release" 
-( xcopy "$(SolutionDir)$(TargetName)\bin\$(Configuration)" "S:\My Utils\MediaMaster\" /s /i /y )
-https://www.codeproject.com/Tips/5278903/Automatic-Copying-of-Release-Executables-to-a-Spec
-
+xcopy "$(SolutionDir)$(TargetName)\bin\Release\*" "E:\01_CA_NHAN\02. HOC TAP\testcopy\$(TargetName)" /s /i /y
+/I - treat as a directory if copying multiple files.
+/Q - Do not display the files being copied.
+/S - Copy subdirectories unless empty.
+/E - Copy empty subdirectories.
+/Y - Do not prompt for overwrite of existing files.
+/R - Overwrite read-only files.
+/D Copy only files that are modified in sourcepath

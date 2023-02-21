@@ -51,3 +51,24 @@ exit /b 1
     </xs:complexType>
   </xs:element>
 </xs:schema>
+
+
+https://dobon.net/vb/bbs/log3-49/29138.html
+
+
+DataTable tbl = ds.Tables[テーブル名];
+　ds.EnforceConstraints = false;　// 制約チェックを無効にする
+　adapter.Fill( tbl );　// データを取得
+　try {
+　　ds.EnforceConstraints = true;　// 制約チェックを再開して例外を捉える
+　} catch (System.Data.ConstraintException e) {
+　　System.Diagnostics.Trace.WriteLine(e.ToString());
+　　// 制約エラーになった行を列挙
+　　foreach (var row in tbl.GetErrors()) {
+　　　System.Diagnostics.Trace.WriteLine(row.RowError);
+　　// 制約エラーになった列を列挙
+　　　foreach (var col in row.GetColumnsInError()) {
+　　　　System.Diagnostics.Trace.WriteLine(row.GetColumnError(col));
+　　　}
+　　}
+　}
